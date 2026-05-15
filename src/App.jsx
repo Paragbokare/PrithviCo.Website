@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Menu, X, ArrowRight, ArrowLeft,
@@ -396,6 +396,32 @@ const App = () => {
               </motion.div>
             </header>
 
+            {/* Stats Section (Impact section moved here) */}
+            <section className="px-4 sm:px-6 md:px-12 py-10 md:py-16 bg-[#F6F1E9]">
+              <div className="max-w-7xl mx-auto">
+                <motion.div 
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8 }}
+                >
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-[#00543b]/10">
+                    <div className="py-4">
+                      <h4 className="font-bold text-4xl sm:text-5xl md:text-6xl text-[#00543b] mb-1 font-cal-sans">30+</h4>
+                      <p className="text-xs uppercase tracking-wider text-gray-500 font-bold">Years of Experience</p>
+                    </div>
+                    <div className="py-4">
+                      <h4 className="font-bold text-4xl sm:text-5xl md:text-6xl text-[#00543b] mb-1 font-cal-sans">120+</h4>
+                      <p className="text-xs uppercase tracking-wider text-gray-500 font-bold">Completed Projects</p>
+                    </div>
+                    <div className="py-4">
+                      <h4 className="font-bold text-4xl sm:text-5xl md:text-6xl text-[#00543b] mb-1 font-cal-sans">100%</h4>
+                      <p className="text-xs uppercase tracking-wider text-gray-500 font-bold">Satisfied Clients</p>
+                    </div>
+                  </div>
+                </motion.div>
+              </div>
+            </section>
+
             {/* About Us Section */}
             <section id="about-us" className="px-4 sm:px-6 md:px-12 pt-16 md:pt-24 pb-8 bg-[#F6F1E9] relative overflow-hidden">
               <div className="max-w-7xl mx-auto relative z-10">
@@ -471,32 +497,6 @@ const App = () => {
                       <p>Integrity Without Compromise.</p>
                     </div>
                   </motion.div>
-                </motion.div>
-
-                <motion.div 
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  transition={{ delay: 0.5 }}
-                  className="mt-16 pt-10 border-t border-[#00543b]/10"
-                >
-                  <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-[#00543b]/10">
-                    <div className="py-4">
-                      <h4 className="font-bold text-4xl sm:text-5xl md:text-6xl text-[#00543b] mb-1 font-cal-sans">30+</h4>
-                      <p className="text-xs uppercase tracking-wider text-gray-500 font-bold">Years of Experience</p>
-                    </div>
-                    <div className="py-4">
-                      <h4 className="font-bold text-4xl sm:text-5xl md:text-6xl text-[#00543b] mb-1 font-cal-sans whitespace-nowrap leading-none">1,25k+</h4>
-                      <p className="text-xs uppercase tracking-wider text-gray-500 font-bold">Sq. Ft. Delivered</p>
-                    </div>
-                    <div className="py-4">
-                      <h4 className="font-bold text-4xl sm:text-5xl md:text-6xl text-[#00543b] mb-1 font-cal-sans">120+</h4>
-                      <p className="text-xs uppercase tracking-wider text-gray-500 font-bold">Completed Projects</p>
-                    </div>
-                    <div className="py-4">
-                      <h4 className="font-bold text-4xl sm:text-5xl md:text-6xl text-[#00543b] mb-1 font-cal-sans">100%</h4>
-                      <p className="text-xs uppercase tracking-wider text-gray-500 font-bold">Satisfied Clients</p>
-                    </div>
-                  </div>
                 </motion.div>
               </div>
             </section>
