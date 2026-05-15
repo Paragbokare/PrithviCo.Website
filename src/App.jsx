@@ -92,35 +92,33 @@ const Timeline = ({ onBack, onNavigate }) => {
           }
         `}</style>
 
-        <header className="sticky top-0 z-30 bg-[#00543b]/90 backdrop-blur-md border-b border-white/10">
-          <div className="max-w-7xl mx-auto px-4 py-4 md:px-12 md:py-4 flex items-center justify-between gap-4">
-            <button
-              type="button"
-              className="text-white text-xl sm:text-2xl md:text-3xl font-bold tracking-tight"
-              onClick={() => onNavigate('home')}
-            >
-              PrithviCo.
-            </button>
-            <div className="hidden md:flex gap-1 items-center bg-white/5 backdrop-blur-md px-2 py-1.5 rounded-full border border-white/10">
-              {['Home', 'About Us', 'Services', 'Projects', 'Our Story', 'Contact'].map((item) => {
-                const id = item === 'Our Story' ? 'timeline' : item.toLowerCase().replace(' ', '-');
-                return (
-                  <button
-                    key={item}
-                    onClick={() => id === 'timeline' ? null : onNavigate(id)}
-                    className={`px-4 lg:px-6 py-2 rounded-full text-sm lg:text-base font-medium transition-all duration-300 ${
-                      id === 'timeline' ? 'bg-white text-[#00543b] shadow-md font-bold cursor-default' : 'text-white hover:bg-white/10'
-                    }`}
-                  >
-                    {item}
-                  </button>
-                );
-              })}
-            </div>
+        <header className="fixed top-0 left-0 w-full z-40 bg-[#00543b] px-4 py-3 md:px-12 md:py-4 flex items-center justify-between shadow-lg border-b border-white/10">
+          <button
+            type="button"
+            className="text-white text-xl sm:text-2xl md:text-3xl font-bold tracking-tight"
+            onClick={() => onNavigate('home')}
+          >
+            PrithviCo.
+          </button>
+          <div className="hidden md:flex gap-1 items-center bg-white/5 backdrop-blur-md px-2 py-1.5 rounded-full border border-white/10">
+            {['Home', 'Services', 'Projects', 'Our Story', 'About Us', 'Contact'].map((item) => {
+              const id = item === 'Our Story' ? 'timeline' : item.toLowerCase().replace(' ', '-');
+              return (
+                <button
+                  key={item}
+                  onClick={() => id === 'timeline' ? null : onNavigate(id)}
+                  className={`px-6 py-2 rounded-full text-base font-medium transition-all duration-300 ${
+                    id === 'timeline' ? 'bg-white text-[#00543b] shadow-md font-bold cursor-default' : 'text-white hover:bg-white/10'
+                  }`}
+                >
+                  {item}
+                </button>
+              );
+            })}
           </div>
         </header>
 
-        <div className="py-8 md:py-10 px-4 sm:px-6 md:px-20">
+        <div className="pt-28 pb-8 md:pb-10 px-4 sm:px-6 md:px-20">
           <motion.div 
             initial="hidden"
             whileInView="visible"
@@ -244,7 +242,7 @@ const App = () => {
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
-      const sections = ['home', 'about-us', 'services', 'projects', 'leadership', 'contact'];
+      const sections = ['home', 'services', 'projects', 'about-us', 'contact'];
       for (const section of sections) {
         const element = document.getElementById(section);
         if (element) {
@@ -337,19 +335,22 @@ const App = () => {
               </button>
 
               <div className="hidden md:flex gap-1 items-center bg-white/5 backdrop-blur-md px-2 py-1.5 rounded-full border border-white/10">
-                {['Home', 'About Us', 'Services', 'Projects', 'Our Story', 'Contact'].map((item) => (
-                  <button 
-                    key={item}
-                    onClick={() => scrollToSection(item === 'Our Story' ? 'timeline' : item.toLowerCase().replace(' ', '-'))}
-                    className={`px-6 py-2 rounded-full text-base font-medium transition-all duration-300 ${
-                      activeTab === (item === 'Our Story' ? 'timeline' : item.toLowerCase().replace(' ', '-')) 
-                        ? 'bg-white text-[#00543b] shadow-md font-bold' 
-                        : 'text-white hover:bg-white/10'
-                    }`}
-                  >
-                    {item}
-                  </button>
-                ))}
+                {['Home', 'Services', 'Projects', 'Our Story', 'About Us', 'Contact'].map((item) => {
+                  const id = item === 'Our Story' ? 'timeline' : item.toLowerCase().replace(' ', '-');
+                  return (
+                    <button 
+                      key={item}
+                      onClick={() => scrollToSection(id)}
+                      className={`px-6 py-2 rounded-full text-base font-medium transition-all duration-300 ${
+                        activeTab === id 
+                          ? 'bg-white text-[#00543b] shadow-md font-bold' 
+                          : 'text-white hover:bg-white/10'
+                      }`}
+                    >
+                      {item}
+                    </button>
+                  );
+                })}
               </div>
 
               <button className="md:hidden text-white bg-white/10 p-2 rounded-lg backdrop-blur-sm" onClick={() => setIsMenuOpen(!isMenuOpen)}>
@@ -365,20 +366,23 @@ const App = () => {
                 className="fixed inset-0 bg-[#00543b] z-30 pt-28 px-6 md:hidden"
               >
                 <div className="flex flex-col gap-6 text-white text-3xl font-cal-sans">
-                  {['Home', 'About Us', 'Services', 'Projects', 'Our Story', 'Contact'].map((item) => (
-                    <button 
-                      key={item} 
-                      onClick={() => scrollToSection(item === 'Our Story' ? 'timeline' : item.toLowerCase().replace(' ', '-'))} 
-                      className="text-left border-b border-white/10 pb-4"
-                    >
-                      {item}
-                    </button>
-                  ))}
+                  {['Home', 'Services', 'Projects', 'Our Story', 'About Us', 'Contact'].map((item) => {
+                    const id = item === 'Our Story' ? 'timeline' : item.toLowerCase().replace(' ', '-');
+                    return (
+                      <button 
+                        key={item} 
+                        onClick={() => scrollToSection(id)} 
+                        className="text-left border-b border-white/10 pb-4"
+                      >
+                        {item}
+                      </button>
+                    );
+                  })}
                 </div>
               </motion.div>
             )}
 
-            {/* Hero Section (Restored to full height) */}
+            {/* 1. Landing Page (Hero) */}
             <header id="home" className="relative min-h-[90vh] md:h-screen w-full bg-[#00543b] overflow-hidden flex flex-col justify-center items-center pt-16">
               <div className="absolute inset-0 z-0 opacity-[0.08] bg-[url('./images/background-vector.jpg')] bg-cover bg-center"></div>
               <motion.div 
@@ -396,7 +400,7 @@ const App = () => {
               </motion.div>
             </header>
 
-            {/* Stats Section (Precise Spacing below Hero) */}
+            {/* 2. Highlights (Stats Section) */}
             <section className="px-4 sm:px-6 md:px-12 py-8 md:py-12 bg-[#F6F1E9]">
               <div className="max-w-7xl mx-auto">
                 <motion.div 
@@ -423,86 +427,7 @@ const App = () => {
               </div>
             </section>
 
-            {/* About Us Section */}
-            <section id="about-us" className="px-4 sm:px-6 md:px-12 pt-6 md:pt-10 pb-8 bg-[#F6F1E9] relative overflow-hidden">
-              <div className="max-w-7xl mx-auto relative z-10">
-                <motion.div 
-                  initial="hidden" 
-                  whileInView="visible" 
-                  viewport={{ once: true, margin: "-100px" }}
-                  className="text-left mb-8 md:mb-12 w-full border-l-4 border-[#00543b] pl-4 sm:pl-6"
-                >
-                  <motion.span variants={fadeInUp} className="text-[#00543b] font-bold tracking-widest uppercase text-sm mb-1 block">Who We Are</motion.span>
-                  <motion.h2 
-                    variants={staggerContainer}
-                    className="text-3xl sm:text-4xl md:text-6xl font-bold text-[#00543b] leading-tight font-cal-sans flex flex-wrap"
-                  >
-                    {"From Prithvi Constructions to PrithviCo.".split(" ").map((word, i) => (
-                      <motion.span key={i} variants={wordReveal} className="mr-3 mb-1">
-                        {word}
-                      </motion.span>
-                    ))}
-                  </motion.h2>
-                </motion.div>
-
-                <div className="grid md:grid-cols-2 gap-10 text-base sm:text-lg md:text-xl text-gray-800 leading-relaxed text-justify font-light">
-                  <motion.p 
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    whileHover={{ scale: 1.01, color: "#000" }}
-                    transition={{ duration: 0.8 }}
-                    className="cursor-default"
-                  >
-                    Prithvi Constructions was founded in 1990. Prashant's deliberate and consistent work ethic built a reputation for reliability. 
-                    The succession of this venture is led by Prasad's next-generation vision under the name PrithviCo. 
-                  </motion.p>
-                  <motion.p 
-                    initial={{ opacity: 0, x: 20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    whileHover={{ scale: 1.01, color: "#000" }}
-                    transition={{ duration: 0.8, delay: 0.2 }}
-                    className="cursor-default"
-                  >
-                    The intent behind this evolution is to adapt for the new age while preserving our core: clear commitments, engineering excellence, and integrity without compromise. 
-                  </motion.p>
-                </div>
-              </div>
-            </section>
-
-            {/* Core Values Section */}
-            <section className="px-4 sm:px-6 md:px-12 py-12 md:py-20 bg-[#F6F1E9] border-t border-[#00543b]/5">
-              <div className="max-w-7xl mx-auto">
-                <motion.div 
-                  initial="hidden"
-                  whileInView="visible"
-                  variants={staggerContainer}
-                  viewport={{ once: true }}
-                  className="grid md:grid-cols-3 gap-8"
-                >
-                  <motion.div variants={fadeInUp} whileHover={{ y: -10 }} className="bg-white p-8 rounded-sm shadow-md border-t-4 border-[#00543b]">
-                    <Eye className="text-[#00543b] mb-4" size={40} />
-                    <h3 className="text-2xl font-bold text-[#00543b] font-cal-sans mb-3">Vision Statement</h3>
-                    <p className="text-gray-700 font-bold leading-relaxed">To be the benchmark of Engineering Excellence in every creation. </p>
-                  </motion.div>
-                  <motion.div variants={fadeInUp} whileHover={{ y: -10 }} className="bg-white p-8 rounded-sm shadow-md border-t-4 border-[#00543b]">
-                    <Target className="text-[#00543b] mb-4" size={40} />
-                    <h3 className="text-2xl font-bold text-[#00543b] font-cal-sans mb-3">Mission Statement</h3>
-                    <p className="text-gray-700 font-bold leading-relaxed">To deliver every commitment with uncompromising Engineering discipline. </p>
-                  </motion.div>
-                  <motion.div variants={fadeInUp} whileHover={{ y: -10 }} className="bg-white p-8 rounded-sm shadow-md border-t-4 border-[#00543b]">
-                    <ShieldCheck className="text-[#00543b] mb-4" size={40} />
-                    <h3 className="text-2xl font-bold text-[#00543b] font-cal-sans mb-3">Core Values</h3>
-                    <div className="text-gray-700 font-bold leading-relaxed space-y-1">
-                      <p>Clear Commitments.</p>
-                      <p>Engineering Excellence.</p>
-                      <p>Integrity Without Compromise.</p>
-                    </div>
-                  </motion.div>
-                </motion.div>
-              </div>
-            </section>
-
-            {/* Services Section */}
+            {/* 3. Services Section */}
             <section id="services" className="py-12 md:py-16 px-4 sm:px-6 md:px-20 bg-[#00543b] text-[#F6F1E9]">
               <div className="max-w-7xl mx-auto">
                 <motion.div 
@@ -539,32 +464,7 @@ const App = () => {
               </div>
             </section>
 
-            {/* Why Us Section */}
-            <section className="px-4 sm:px-6 md:px-12 py-16 md:py-24 bg-[#0f1f18] text-white">
-              <motion.div 
-                initial="hidden"
-                whileInView="visible"
-                variants={fadeInUp}
-                viewport={{ once: true }}
-                className="max-w-7xl mx-auto"
-              >
-                <span className="text-white/70 font-bold tracking-widest uppercase text-sm mb-2 block">Why Choose PrithviCo.</span>
-                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-8">
-                  {['Tech Driven Execution', 'Execution Excellence', 'Precise Coordination', 'Risk Mitigation'].map((item, idx) => (
-                    <motion.div 
-                      key={idx}
-                      whileHover={{ scale: 1.05, borderColor: "rgba(255,255,255,0.5)" }}
-                      className="bg-white/5 rounded-lg p-6 border border-white/10"
-                    >
-                      <h3 className="text-lg font-bold mb-2">{item}</h3>
-                      <p className="text-white/70 text-sm">Dedicated engineering standards ensuring precision in every square foot delivered. </p>
-                    </motion.div>
-                  ))}
-                </div>
-              </motion.div>
-            </section>
-
-            {/* Projects Section */}
+            {/* 4. Projects Section & 5. Link for story timeline */}
             <section id="projects" className="px-4 sm:px-6 md:px-12 py-16 md:py-24 bg-[#F6F1E9]">
               <div className="max-w-7xl mx-auto relative px-4 md:px-16">
                 <motion.div initial="hidden" whileInView="visible" variants={fadeInUp} className="mb-10 text-left">
@@ -616,7 +516,111 @@ const App = () => {
               </div>
             </section>
 
-            {/* Leadership Section */}
+            {/* 6. Why choose PrithviCo */}
+            <section id="why-us" className="px-4 sm:px-6 md:px-12 py-16 md:py-24 bg-[#0f1f18] text-white">
+              <motion.div 
+                initial="hidden"
+                whileInView="visible"
+                variants={fadeInUp}
+                viewport={{ once: true }}
+                className="max-w-7xl mx-auto"
+              >
+                <span className="text-white/70 font-bold tracking-widest uppercase text-sm mb-2 block">Why Choose PrithviCo.</span>
+                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-8">
+                  {['Tech Driven Execution', 'Execution Excellence', 'Precise Coordination', 'Risk Mitigation'].map((item, idx) => (
+                    <motion.div 
+                      key={idx}
+                      whileHover={{ scale: 1.05, borderColor: "rgba(255,255,255,0.5)" }}
+                      className="bg-white/5 rounded-lg p-6 border border-white/10"
+                    >
+                      <h3 className="text-lg font-bold mb-2">{item}</h3>
+                      <p className="text-white/70 text-sm">Dedicated engineering standards ensuring precision in every square foot delivered. </p>
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
+            </section>
+
+            {/* 7. About us */}
+            <section id="about-us" className="px-4 sm:px-6 md:px-12 pt-6 md:pt-16 pb-8 bg-[#F6F1E9] relative overflow-hidden">
+              <div className="max-w-7xl mx-auto relative z-10">
+                <motion.div 
+                  initial="hidden" 
+                  whileInView="visible" 
+                  viewport={{ once: true, margin: "-100px" }}
+                  className="text-left mb-8 md:mb-12 w-full border-l-4 border-[#00543b] pl-4 sm:pl-6"
+                >
+                  <motion.span variants={fadeInUp} className="text-[#00543b] font-bold tracking-widest uppercase text-sm mb-1 block">Who We Are</motion.span>
+                  <motion.h2 
+                    variants={staggerContainer}
+                    className="text-3xl sm:text-4xl md:text-6xl font-bold text-[#00543b] leading-tight font-cal-sans flex flex-wrap"
+                  >
+                    {"From Prithvi Constructions to PrithviCo.".split(" ").map((word, i) => (
+                      <motion.span key={i} variants={wordReveal} className="mr-3 mb-1">
+                        {word}
+                      </motion.span>
+                    ))}
+                  </motion.h2>
+                </motion.div>
+
+                <div className="grid md:grid-cols-2 gap-10 text-base sm:text-lg md:text-xl text-gray-800 leading-relaxed text-justify font-light">
+                  <motion.p 
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    whileHover={{ scale: 1.01, color: "#000" }}
+                    transition={{ duration: 0.8 }}
+                    className="cursor-default"
+                  >
+                    Prithvi Constructions was founded in 1990. Prashant's deliberate and consistent work ethic landed company a reputation for being reliable. 
+                    The succession of this venture is led by Prasad's next-gen vision and named as PrithviCo. 
+                  </motion.p>
+                  <motion.p 
+                    initial={{ opacity: 0, x: 20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    whileHover={{ scale: 1.01, color: "#000" }}
+                    transition={{ duration: 0.8, delay: 0.2 }}
+                    className="cursor-default"
+                  >
+                    The intent behind the evolution was to adapt for the new age while preserving the core. We seek eco-friendly materials and methods; we design structures that harmonize with nature. 
+                  </motion.p>
+                </div>
+              </div>
+            </section>
+
+            {/* Core Values Section (Part of About Us) */}
+            <section className="px-4 sm:px-6 md:px-12 py-12 md:py-20 bg-[#F6F1E9] border-t border-[#00543b]/5">
+              <div className="max-w-7xl mx-auto">
+                <motion.div 
+                  initial="hidden"
+                  whileInView="visible"
+                  variants={staggerContainer}
+                  viewport={{ once: true }}
+                  className="grid md:grid-cols-3 gap-8"
+                >
+                  <motion.div variants={fadeInUp} whileHover={{ y: -10 }} className="bg-white p-8 rounded-sm shadow-md border-t-4 border-[#00543b]">
+                    <Eye className="text-[#00543b] mb-4" size={40} />
+                    <h3 className="text-2xl font-bold text-[#00543b] font-cal-sans mb-3">Vision Statement</h3>
+                    <p className="text-gray-700 font-bold leading-relaxed">To be the benchmark of Engineering Excellence in every creation. </p>
+                  </motion.div>
+                  <motion.div variants={fadeInUp} whileHover={{ y: -10 }} className="bg-white p-8 rounded-sm shadow-md border-t-4 border-[#00543b]">
+                    <Target className="text-[#00543b] mb-4" size={40} />
+                    <h3 className="text-2xl font-bold text-[#00543b] font-cal-sans mb-3">Mission Statement</h3>
+                    <p className="text-gray-700 font-bold leading-relaxed">To deliver every commitment with uncompromising Engineering discipline. </p>
+                  </motion.div>
+                  <motion.div variants={fadeInUp} whileHover={{ y: -10 }} className="bg-white p-8 rounded-sm shadow-md border-t-4 border-[#00543b]">
+                    <ShieldCheck className="text-[#00543b] mb-4" size={40} />
+                    <h3 className="text-2xl font-bold text-[#00543b] font-cal-sans mb-3">Core Values</h3>
+                    <div className="text-gray-700 font-bold leading-relaxed space-y-1">
+                      <p>Clear Commitments.</p>
+                      <p>Engineering Excellence.</p>
+                      <p>Integrity Without Compromise.</p>
+                    </div>
+                  </motion.div>
+                </motion.div>
+              </div>
+            </section>
+
+            {/* 8. Leadership Section */}
             <section id="leadership" className="px-4 sm:px-6 md:px-12 py-16 md:py-32 bg-white overflow-hidden">
               <div className="max-w-7xl mx-auto">
                 <motion.h2 initial="hidden" whileInView="visible" variants={fadeInUp} className="text-[#00543b] font-bold uppercase text-4xl md:text-6xl mb-20 text-center font-cal-sans">Our Leadership</motion.h2>
@@ -674,7 +678,7 @@ const App = () => {
               </div>
             </section>
 
-            {/* Contact Section */}
+            {/* 9. Contact Section */}
             <section id="contact" className="px-4 sm:px-6 md:px-12 py-16 md:py-24 bg-[#F6F1E9]">
               <motion.div 
                 initial="hidden" 
@@ -730,6 +734,7 @@ const App = () => {
             <footer className="bg-[#1a1a1a] text-white pt-12 pb-8 px-6 md:px-12 relative z-10 text-center">
               <span className="font-bold text-3xl font-cal-sans block mb-8">PrithviCo.</span>
               <p className="text-xs text-gray-500 border-t border-gray-800 pt-6">Designed and Developed by Shruti Kamble & Parag Bokare </p>
+              <p className="text-[10px] text-gray-600 mt-4 uppercase tracking-[0.2em]">© 2026 PrithviCo. All Rights Reserved. </p>
             </footer>
           </motion.div>
         )}
