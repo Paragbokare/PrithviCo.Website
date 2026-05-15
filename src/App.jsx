@@ -378,7 +378,7 @@ const App = () => {
               </motion.div>
             )}
 
-            {/* Hero Section */}
+            {/* Hero Section (Restored to full height) */}
             <header id="home" className="relative min-h-[90vh] md:h-screen w-full bg-[#00543b] overflow-hidden flex flex-col justify-center items-center pt-16">
               <div className="absolute inset-0 z-0 opacity-[0.08] bg-[url('./images/background-vector.jpg')] bg-cover bg-center"></div>
               <motion.div 
@@ -396,12 +396,13 @@ const App = () => {
               </motion.div>
             </header>
 
-            {/* Stats Section (Impact section moved here) */}
-            <section className="px-4 sm:px-6 md:px-12 py-10 md:py-16 bg-[#F6F1E9]">
+            {/* Stats Section (Precise Spacing below Hero) */}
+            <section className="px-4 sm:px-6 md:px-12 py-8 md:py-12 bg-[#F6F1E9]">
               <div className="max-w-7xl mx-auto">
                 <motion.div 
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
                   transition={{ duration: 0.8 }}
                 >
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-[#00543b]/10">
@@ -423,7 +424,7 @@ const App = () => {
             </section>
 
             {/* About Us Section */}
-            <section id="about-us" className="px-4 sm:px-6 md:px-12 pt-16 md:pt-24 pb-8 bg-[#F6F1E9] relative overflow-hidden">
+            <section id="about-us" className="px-4 sm:px-6 md:px-12 pt-6 md:pt-10 pb-8 bg-[#F6F1E9] relative overflow-hidden">
               <div className="max-w-7xl mx-auto relative z-10">
                 <motion.div 
                   initial="hidden" 
