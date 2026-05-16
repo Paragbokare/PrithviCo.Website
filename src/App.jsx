@@ -41,6 +41,9 @@ const wordReveal = {
 
 // --- TIMELINE DATA ---
 const projectsData = [
+  { year: "2026", name: "Swastik Heights", location: "Bhide Square, Ahilyanagar", area: "27,000 sq.ft", type: "Mixed Use", period: "22" },
+  { year: "2025", name: "Commercial Edifice", location: "Chitale Road, Ahilyanagar", area: "12,000 sq.ft", type: "Commercial", period: "8" },
+  { year: "2024", name: "Kaiser's English Medium School", location: "Ahilyanagar", area: "15,000 sq.ft", type: "Institutional", period: "12" },
   { year: "2023", name: "Shriram Engineering", location: "MIDC, Ahilyanagar", area: "5,000 sq.ft", type: "Industrial", period: "5" },
   { year: "2022", name: "Row DKRB Houses", location: "Tapovan Road, Ahilyanagar", area: "8,000 sq.ft", type: "Residential", period: "12" },
   { year: "2020", name: "Samarth Hydraulics Shed", location: "MIDC, Ahilyanagar", area: "12,000 sq.ft", type: "Industrial", period: "12" },
@@ -437,7 +440,6 @@ const App = () => {
                   viewport={{ once: true }}
                   className="text-center mb-10 md:mb-12"
                 >
-                  <span className="bg-[#F6F1E9] text-[#00543b] px-3 py-1 rounded-full text-xs font-bold uppercase mb-3 inline-block">Our Expertise</span>
                   <h2 className="text-3xl md:text-4xl font-extrabold font-cal-sans">Our Services</h2>
                 </motion.div>
 
@@ -550,7 +552,7 @@ const App = () => {
                   viewport={{ once: true, margin: "-100px" }}
                   className="text-left mb-8 md:mb-12 w-full border-l-4 border-[#00543b] pl-4 sm:pl-6"
                 >
-                  <motion.span variants={fadeInUp} className="text-[#00543b] font-bold tracking-widest uppercase text-sm mb-1 block">Who We Are</motion.span>
+                  <span className="text-[#00543b] font-bold tracking-widest uppercase text-sm mb-1 block">Who We Are</span>
                   <motion.h2 
                     variants={staggerContainer}
                     className="text-3xl sm:text-4xl md:text-6xl font-bold text-[#00543b] leading-tight font-cal-sans flex flex-wrap"
@@ -663,11 +665,18 @@ const App = () => {
                           <div className="space-y-4 text-sm md:text-base">
                             <div>
                               <p className="font-bold text-xs uppercase text-gray-400">Structural</p>
-                              <p>Atkins Realis (Noida), Vivek Apte Consulting Engineers, Hiray Consulting Engineers. </p>
+                              <p className="leading-relaxed">
+                                AtkinsRéalis (Noida)<br />
+                                Vivek Apte Consulting Engineers<br />
+                                Hiray Consulting Engineers
+                              </p>
                             </div>
                             <div>
                               <p className="font-bold text-xs uppercase text-gray-400">Academic</p>
-                              <p>Teaching Assistant (BITS Pilani), Visiting Lecturer (Govt. Polytechnic). </p>
+                              <p className="leading-relaxed">
+                                Teaching Assistant (BITS Pilani)<br />
+                                Visiting Lecturer (Govt. Polytechnic)
+                              </p>
                             </div>
                           </div>
                         </div>
@@ -725,6 +734,13 @@ const App = () => {
                         <a href="mailto:info@prithvico.com" className="hover:underline">info@prithvico.com </a>
                       </p>
                     </div>
+                  </div>
+
+                  {/* 3. Join Us Call to Action Block */}
+                  <div className="mt-12 text-center border-t border-white/10 pt-8 w-full">
+                    <p className="text-white/80 text-base">
+                      If you wanna join us send your cv at <a href="mailto:careers@prithvico.com" className="underline font-bold text-white hover:text-[#F6F1E9] transition-colors">careers@prithvico.com</a>
+                    </p>
                   </div>
                 </div>
               </motion.div>
