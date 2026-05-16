@@ -739,7 +739,7 @@ const App = () => {
                   {/* 3. Join Us Call to Action Block */}
                   <div className="mt-12 text-center border-t border-white/10 pt-8 w-full">
                     <p className="text-white/80 text-base">
-                      If you wanna join us send your cv at <a href="mailto:careers@prithvico.com" className="underline font-bold text-white hover:text-[#F6F1E9] transition-colors">careers@prithvico.com</a>
+                      To explore career opportunities with us, please forward your CV to <a href="mailto:careers@prithvico.com" className="underline font-bold text-white hover:text-[#F6F1E9] transition-colors">careers@prithvico.com</a>
                     </p>
                   </div>
                 </div>
